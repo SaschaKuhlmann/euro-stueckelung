@@ -1,0 +1,12 @@
+:host {
+  --mat-toolbar-container-background-color: var(--mat-sys-primary-container);
+  --mat-toolbar-container-text-color: var(--mat-sys-on-primary-container);
+}
+
+.mat-mdc-menu-item {
+  gap: 1rem;
+}
+
+.mat-mdc-menu-item .mat-icon {
+  margin-right: 0;
+}

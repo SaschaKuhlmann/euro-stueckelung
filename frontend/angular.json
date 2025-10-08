@@ -27,11 +27,29 @@
               }
             ],
             "styles": [
-              "src/styles.scss"
+              {
+                "input": "src/styles.scss"
+              },
+              {
+                "inject": false,
+                "input": "src/themes/azure-blue.scss",
+                "bundleName": "azure"
+              },
+              {
+                "inject": false,
+                "input": "src/themes/rose-orange.scss",
+                "bundleName": "rose"
+              },
+              {
+                "inject": false,
+                "input": "src/themes/magenta-green.scss",
+                "bundleName": "magenta"
+              }
             ],
-            "polyfills": [
-              "@angular/localize/init"
-            ]
+            "stylePreprocessorOptions": {
+              "includePaths": ["node_modules", "src", "src/themes"]
+            },
+            "polyfills": ["@angular/localize/init"]
           },
           "configurations": {
             "production": {
@@ -83,12 +101,8 @@
                 "input": "public"
               }
             ],
-            "styles": [
-              "src/styles.scss"
-            ],
-            "polyfills": [
-              "@angular/localize/init"
-            ]
+            "styles": ["src/styles.scss"],
+            "polyfills": ["@angular/localize/init"]
           }
         }
       }

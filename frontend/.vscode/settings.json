@@ -1,0 +1,38 @@
+{
+  "editor.formatOnSaveMode": "file",
+  "editor.formatOnSave": true,
+  "editor.codeActionsOnSave": {
+    "source.organizeImports": "explicit"
+  },
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "material-icon-theme.activeIconPack": "angular_ngrx",
+  "material-icon-theme.files.associations": {
+    "service.ts": "angular-service",
+    "actions.ts": "ngrx-actions",
+    "effects.ts": "ngrx-effects",
+    "model.ts": "ngrx-entity",
+    "reducer.ts": "ngrx-reducer"
+  },
+  "workbench.colorCustomizations": {
+    "activityBar.activeBackground": "#b69b1e",
+    "activityBar.activeBorder": "#6f40bf",
+    "activityBar.background": "#b69b1e",
+    "activityBar.foreground": "#15202b",
+    "activityBar.inactiveForeground": "#15202b99",
+    "activityBarBadge.background": "#adf1e5",
+    "activityBarBadge.foreground": "#15202b",
+    "sash.hoverBorder": "#b69b1e",
+    "statusBar.background": "#8a7617",
+    "statusBar.foreground": "#e7e7e7",
+    "statusBarItem.hoverBackground": "#b69b1e",
+    "statusBarItem.remoteBackground": "#8a7617",
+    "statusBarItem.remoteForeground": "#e7e7e7",
+    "titleBar.activeBackground": "#8a7617",
+    "titleBar.activeForeground": "#e7e7e7",
+    "titleBar.inactiveBackground": "#8a761799",
+    "titleBar.inactiveForeground": "#e7e7e799",
+    "commandCenter.border": "#e7e7e799"
+  },
+  "peacock.color": "#8a7617",
+  "peacock.remoteColor": "#8a7617"
+}
