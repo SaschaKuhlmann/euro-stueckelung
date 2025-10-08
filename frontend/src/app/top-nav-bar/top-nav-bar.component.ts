@@ -16,8 +16,8 @@ import { UiStore } from './services/store';
 @Component({
   selector: 'app-top-nav-bar',
   imports: [MatToolbar, MatIconButton, MatIcon, MatMenu, MatMenuItem, MatMenuTrigger, MatTooltip],
-  templateUrl: './top-nav-bar.html',
-  styleUrl: './top-nav-bar.scss',
+  templateUrl: './top-nav-bar.component.html',
+  styleUrl: './top-nav-bar.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TopNavBar {
