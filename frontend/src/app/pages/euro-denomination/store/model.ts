@@ -6,12 +6,18 @@ export type Denomination = (typeof DENOMINATIONS)[number];
 export type Breakdown = {
   [D in Denomination]: number;
 };
+export const calcOriginOptions = [
+  { value: 'frontend', viewValue: $localize`Frontend` },
+  { value: 'backend', viewValue: $localize`Backend` },
+] as const;
+export type DenomOrigin = (typeof calcOriginOptions)[number]['value'];
 
 export type EuroDenominationState = {
-  originIsBackend: boolean;
+  origin: DenomOrigin;
   isCalculating: boolean;
   error: string | null;
-  lastEuroValue: number;
+  currentCentValue: number;
+  lastCentValue: number;
   breakdown: Breakdown;
   difference: Breakdown;
 };
@@ -21,7 +27,17 @@ export const initialBreakdown: Breakdown = Object.fromEntries(
 ) as Breakdown;
 
 export type DenominationResult = {
-  lastEuroValue: number;
+  newValue: number;
   breakdown: Breakdown;
   difference: Breakdown;
 };
+
+export type BreakdownRow = {
+  denomination: Denomination;
+  value: number;
+};
+
+export function formatBreakdown(breakdown: Breakdown, filterZero: boolean): BreakdownRow[] {
+  const breakdownrow = DENOMINATIONS.map((d) => ({ denomination: d, value: breakdown[d] }));
+  return filterZero ? breakdownrow.filter((row) => row.value > 0) : breakdownrow;
+}

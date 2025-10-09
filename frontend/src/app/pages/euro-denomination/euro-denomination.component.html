@@ -1,1 +1,40 @@
-<p>euro-denomination.component works!</p>
+<label id="origin-radio-group-label" i18n>Pick your prefered calculation origin</label>
+<mat-radio-group
+  aria-labelledby="origin-radio-group-label"
+  class="origin-radio-group"
+  [value]="origin()"
+  (change)="setOrigin($event.value)"
+>
+  @for (option of originOptions; track option.value) {
+  <mat-radio-button [value]="option.value">{{ option.viewValue }}</mat-radio-button>
+  }
+</mat-radio-group>
+<form>
+  <mat-form-field>
+    <mat-label i18n>Value to denominate</mat-label>
+    <input matInput [formControl]="currencyControl" />
+    @if (currencyControl.hasError('pattern') && !currencyControl.hasError('required')) {
+    <mat-error>Please enter a valid Currency value</mat-error>
+    } @if (currencyControl.hasError('required')) {
+    <mat-error>Value is <strong>required</strong></mat-error>
+    }
+  </mat-form-field>
+  <button
+    mat-button
+    [disabled]="!currencyControl.valid"
+    (click)="calculateDenomination(currencyControl.value!)"
+  >
+    denominate
+  </button>
+</form>
+
+<div>
+  <app-breakdown-table
+    [breakdown]="breakdown()"
+    [currentCentValue]="currentCentValue()"
+  ></app-breakdown-table>
+  <app-difference-table
+    [difference]="difference()"
+    [lastCentValue]="lastCentValue()"
+  ></app-difference-table>
+</div>

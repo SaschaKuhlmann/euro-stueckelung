@@ -1,9 +1,10 @@
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
-import { MatIconButton } from '@angular/material/button';
+import { MatButton, MatIconButton } from '@angular/material/button';
 import { MatIcon } from '@angular/material/icon';
 import { MatMenu, MatMenuItem, MatMenuTrigger } from '@angular/material/menu';
 import { MatToolbar } from '@angular/material/toolbar';
 import { MatTooltip } from '@angular/material/tooltip';
+import { RouterLink, RouterLinkActive } from '@angular/router';
 import { type language, languageOptions, LanguageService } from './services/language.service';
 import {
   type DocsSiteTheme,
@@ -15,7 +16,18 @@ import { UiStore } from './services/store';
 
 @Component({
   selector: 'app-top-nav-bar',
-  imports: [MatToolbar, MatIconButton, MatIcon, MatMenu, MatMenuItem, MatMenuTrigger, MatTooltip],
+  imports: [
+    RouterLink,
+    RouterLinkActive,
+    MatButton,
+    MatToolbar,
+    MatIconButton,
+    MatIcon,
+    MatMenu,
+    MatMenuItem,
+    MatMenuTrigger,
+    MatTooltip,
+  ],
   templateUrl: './top-nav-bar.component.html',
   styleUrl: './top-nav-bar.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,

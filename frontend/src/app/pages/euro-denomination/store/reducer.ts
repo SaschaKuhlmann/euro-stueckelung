@@ -3,19 +3,20 @@ import { EuroDenominationActions } from './actions';
 import { initialBreakdown, type EuroDenominationState } from './model';
 
 const initialState: EuroDenominationState = {
-  originIsBackend: false,
+  origin: 'frontend',
   isCalculating: false,
   error: null,
-  lastEuroValue: 0,
+  lastCentValue: 0,
+  currentCentValue: 0,
   breakdown: { ...initialBreakdown },
   difference: { ...initialBreakdown },
 };
 const reducer = createReducer(
   initialState,
-  //Toggle Origin
-  on(EuroDenominationActions.toggleCalcOrigin, (state) => ({
+  //Set Origin
+  on(EuroDenominationActions.setCalcOrigin, (state, action) => ({
     ...state,
-    originIsBackend: !state.originIsBackend,
+    origin: action.origin,
   })),
   //Calculate Denomination
   on(EuroDenominationActions.calculateDenomination, (state) => ({
@@ -26,7 +27,8 @@ const reducer = createReducer(
   on(EuroDenominationActions.calculateDenominationFrontendSuccess, (state, action) => ({
     ...state,
     isCalculating: false,
-    lastEuroValue: action.result.lastEuroValue,
+    currentCentValue: action.result.newValue,
+    lastCentValue: state.currentCentValue,
     breakdown: action.result.breakdown,
     difference: action.result.difference,
   })),
@@ -39,7 +41,8 @@ const reducer = createReducer(
   on(EuroDenominationActions.calculateDenominationBackendSuccess, (state, action) => ({
     ...state,
     isCalculating: false,
-    lastEuroValue: action.result.lastEuroValue,
+    currentCentValue: action.result.newValue,
+    lastCentValue: state.currentCentValue,
     breakdown: action.result.breakdown,
     difference: action.result.difference,
   })),

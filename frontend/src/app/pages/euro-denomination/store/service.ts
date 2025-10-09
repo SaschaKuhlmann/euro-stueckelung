@@ -22,11 +22,11 @@ export class DenominationFrontendService {
   calcDenomination(value: number, oldBreakdown: Breakdown) {
     const newBreakdown = this.calculateBreakdown(value);
     const difference = this.calculateDifference(oldBreakdown, newBreakdown);
-    return of({ breakdown: newBreakdown, difference, lastEuroValue: value });
+    return of({ breakdown: newBreakdown, difference, newValue: value });
   }
 
-  calculateBreakdown(amountEuro: number): Breakdown {
-    let remaining = Math.round(amountEuro * 100);
+  calculateBreakdown(amountInCent: number): Breakdown {
+    let remaining = amountInCent;
     const breakdown = { ...initialBreakdown };
 
     for (const denom of DENOMINATIONS) {

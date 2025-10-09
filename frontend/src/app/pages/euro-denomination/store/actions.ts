@@ -1,11 +1,11 @@
-import { createActionGroup, emptyProps, props } from '@ngrx/store';
-import { type DenominationResult } from './model';
+import { createActionGroup, props } from '@ngrx/store';
+import { type DenominationResult, type DenomOrigin } from './model';
 
 export const EuroDenominationActions = createActionGroup({
   source: 'Euro Denomination API',
   events: {
-    'Toggle Calc Origin': emptyProps(),
-    'Calculate Denomination': props<{ euroValue: number }>(),
+    'Set Calc Origin': props<{ origin: DenomOrigin }>(),
+    'Calculate Denomination': props<{ newCentValue: number }>(),
     'Calculate Denomination Backend Success': props<{ result: DenominationResult }>(),
     'Calculate Denomination Backend Failure': props<{ error: string }>(),
     'Calculate Denomination Frontend Success': props<{ result: DenominationResult }>(),

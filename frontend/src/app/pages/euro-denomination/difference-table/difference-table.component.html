@@ -1,0 +1,17 @@
+<span>{{ lastCentValue() | money }}</span>
+<table mat-table [dataSource]="differenceRow()" class="mat-elevation-z8 demo-table">
+  <!-- Denomination Column -->
+  <ng-container matColumnDef="denomination">
+    <th mat-header-cell *matHeaderCellDef i18n>Denomination</th>
+    <td mat-cell *matCellDef="let element">{{ element.denomination | money }}</td>
+  </ng-container>
+
+  <!-- Value Column -->
+  <ng-container matColumnDef="value">
+    <th mat-header-cell *matHeaderCellDef i18n>Difference</th>
+    <td mat-cell *matCellDef="let element">{{ element.value | signNumber }}</td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+</table>

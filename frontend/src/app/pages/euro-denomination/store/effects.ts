@@ -19,11 +19,11 @@ export class EuroDenominationffects {
       ofType(EuroDenominationActions.calculateDenomination),
       withLatestFrom(
         this.store.select(euroDenominationFeature.selectBreakdown),
-        this.store.select(euroDenominationFeature.selectOriginIsBackend)
+        this.store.select(euroDenominationFeature.selectOrigin)
       ),
-      exhaustMap(([action, breakdown, originIsBackend]) => {
-        const euroValue = action.euroValue;
-        if (!originIsBackend) {
+      exhaustMap(([action, breakdown, origin]) => {
+        const euroValue = action.newCentValue;
+        if (origin === 'frontend') {
           return this.frontendService.calcDenomination(euroValue, breakdown).pipe(
             map((result) =>
               EuroDenominationActions.calculateDenominationFrontendSuccess({ result })

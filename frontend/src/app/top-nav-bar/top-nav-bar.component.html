@@ -1,5 +1,8 @@
 <mat-toolbar>
-  <span i18n>Home</span>
+  <a mat-button [routerLink]="['home']" routerLinkActive="mat-mdc-button-active" i18n>Home</a>
+  <a mat-button [routerLink]="['denomination']" routerLinkActive="mat-mdc-button-active" i18n
+    >Denomination</a
+  >
   <span class="flex-spacer"></span>
   <button
     class="on-primary-container-icon-button"

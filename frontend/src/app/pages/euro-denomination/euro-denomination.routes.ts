@@ -1,3 +1,4 @@
+import { CurrencyPipe } from '@angular/common';
 import { type Routes } from '@angular/router';
 import { provideEffects } from '@ngrx/effects';
 import { provideState } from '@ngrx/store';
@@ -8,7 +9,11 @@ import { euroDenominationFeature } from './store/reducer';
 export const euroDenominationRoutes: Routes = [
   {
     path: '',
-    providers: [provideState(euroDenominationFeature), provideEffects(EuroDenominationffects)],
+    providers: [
+      provideState(euroDenominationFeature),
+      provideEffects(EuroDenominationffects),
+      CurrencyPipe,
+    ],
     children: [{ path: '', component: EuroDenominationComponent }],
   },
 ];
