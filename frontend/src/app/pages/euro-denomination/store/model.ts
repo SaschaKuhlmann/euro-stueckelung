@@ -36,8 +36,3 @@ export type BreakdownRow = {
   denomination: Denomination;
   value: number;
 };
-
-export function formatBreakdown(breakdown: Breakdown, filterZero: boolean): BreakdownRow[] {
-  const breakdownrow = DENOMINATIONS.map((d) => ({ denomination: d, value: breakdown[d] }));
-  return filterZero ? breakdownrow.filter((row) => row.value > 0) : breakdownrow;
-}

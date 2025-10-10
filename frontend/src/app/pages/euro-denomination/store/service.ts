@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
 import { of } from 'rxjs';
+import { environment } from '../../../../environments/environment';
 import {
   type Breakdown,
   type BreakdownRow,
@@ -13,11 +14,11 @@ import {
   providedIn: 'root',
 })
 export class DenominationBackendService {
-  private api = 'dummy.com'; // `${environment.serverRef}/cartan`;
+  private api = `${environment.serverRef}/api/denomination`;
   private http = inject(HttpClient);
 
   calcDenomination(value: number, oldBreakdown: Breakdown) {
-    const url = `${this.api}/calc/denomination`;
+    const url = `${this.api}/v1`;
     return this.http.post<DenominationResult>(url, { value, oldBreakdown });
   }
 }
