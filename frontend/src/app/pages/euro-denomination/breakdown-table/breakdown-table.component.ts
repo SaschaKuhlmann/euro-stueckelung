@@ -1,22 +1,17 @@
-import { ChangeDetectionStrategy, Component, computed, input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, input } from '@angular/core';
+import { MatCard, MatCardContent, MatCardHeader, MatCardTitle } from '@angular/material/card';
 import { MatTableModule } from '@angular/material/table';
 import { MoneyPipe } from '../../../pipes/money-pipe';
-import { type Breakdown, formatBreakdown } from '../store/model';
-
+import { BreakdownRow } from '../store/model';
 @Component({
   selector: 'app-breakdown-table',
-  imports: [MatTableModule, MoneyPipe],
+  imports: [MatTableModule, MatCard, MatCardTitle, MatCardContent, MatCardHeader, MoneyPipe],
   templateUrl: './breakdown-table.component.html',
   styleUrl: './breakdown-table.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class BreakdownTableComponent {
-  breakdown = input.required<Breakdown>();
+  breakdownRows = input.required<BreakdownRow[]>();
   currentCentValue = input.required<number>();
-
-  breakdownRow = computed(() => {
-    const breakdown = this.breakdown();
-    return formatBreakdown(breakdown, true);
-  });
   displayedColumns: string[] = ['denomination', 'value'];
 }

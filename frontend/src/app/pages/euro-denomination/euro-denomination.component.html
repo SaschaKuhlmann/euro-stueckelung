@@ -1,36 +1,46 @@
-<label id="origin-radio-group-label" i18n>Pick your prefered calculation origin</label>
-<mat-radio-group
-  aria-labelledby="origin-radio-group-label"
-  class="origin-radio-group"
-  [value]="origin()"
-  (change)="setOrigin($event.value)"
->
-  @for (option of originOptions; track option.value) {
-  <mat-radio-button [value]="option.value">{{ option.viewValue }}</mat-radio-button>
-  }
-</mat-radio-group>
-<form>
-  <mat-form-field>
+<div class="origin-container">
+  <mat-label id="origin-label" class="origin-container__lable" i18n
+    >Pick your calculation origin</mat-label
+  >
+  <mat-radio-group
+    aria-labelledby="origin-label"
+    class="origin-container__radio-group"
+    [value]="origin()"
+    (change)="setOrigin($event.value)"
+  >
+    @for (option of originOptions; track option.value) {
+    <mat-radio-button [value]="option.value">{{ option.viewValue }}</mat-radio-button>
+    }
+  </mat-radio-group>
+</div>
+<form class="denom-form">
+  <mat-form-field class="denom-form__field" [appearance]="'outline'">
     <mat-label i18n>Value to denominate</mat-label>
-    <input matInput [formControl]="currencyControl" />
+    <input matInput type="value" [formControl]="currencyControl" />
+    <span matTextPrefix>€&nbsp;</span>
     @if (currencyControl.hasError('pattern') && !currencyControl.hasError('required')) {
-    <mat-error>Please enter a valid Currency value</mat-error>
+    <mat-error>Please enter a valid Currency value e.g. 123.15</mat-error>
     } @if (currencyControl.hasError('required')) {
     <mat-error>Value is <strong>required</strong></mat-error>
     }
   </mat-form-field>
   <button
-    mat-button
-    [disabled]="!currencyControl.valid"
+    class="denom-form__button"
+    matButton="filled"
+    [disabled]="!currencyControl.valid || isCalculating()"
     (click)="calculateDenomination(currencyControl.value!)"
   >
-    denominate
+    @if (isCalculating()) {
+    <mat-spinner class="denom-form__button__spinner" diameter="16"></mat-spinner>
+    } @else {
+    <ng-container i18n>denominate</ng-container>
+    }
   </button>
 </form>
 
-<div>
+<div class="table-container">
   <app-breakdown-table
-    [breakdown]="breakdown()"
+    [breakdownRows]="breakdownRows()"
     [currentCentValue]="currentCentValue()"
   ></app-breakdown-table>
   <app-difference-table

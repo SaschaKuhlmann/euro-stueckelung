@@ -19,7 +19,7 @@ export type EuroDenominationState = {
   currentCentValue: number;
   lastCentValue: number;
   breakdown: Breakdown;
-  difference: Breakdown;
+  difference: BreakdownRow[];
 };
 
 export const initialBreakdown: Breakdown = Object.fromEntries(
@@ -29,7 +29,7 @@ export const initialBreakdown: Breakdown = Object.fromEntries(
 export type DenominationResult = {
   newValue: number;
   breakdown: Breakdown;
-  difference: Breakdown;
+  difference: BreakdownRow[];
 };
 
 export type BreakdownRow = {

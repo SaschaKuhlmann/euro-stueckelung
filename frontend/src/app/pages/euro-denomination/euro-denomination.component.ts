@@ -1,8 +1,9 @@
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { FormControl, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
-import { MatButton } from '@angular/material/button';
-import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatButtonModule } from '@angular/material/button';
+import { MatFormFieldModule, MatLabel } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatRadioButton, MatRadioGroup } from '@angular/material/radio';
 import { Store } from '@ngrx/store';
 import { BreakdownTableComponent } from './breakdown-table/breakdown-table.component';
@@ -16,13 +17,15 @@ import { euroDenominationFeature } from './store/reducer';
   imports: [
     MatRadioGroup,
     MatRadioButton,
+    MatLabel,
     BreakdownTableComponent,
     DifferenceTableComponent,
     FormsModule,
     MatFormFieldModule,
     MatInputModule,
     ReactiveFormsModule,
-    MatButton,
+    MatButtonModule,
+    MatProgressSpinnerModule,
   ],
   templateUrl: './euro-denomination.component.html',
   styleUrl: './euro-denomination.component.scss',
@@ -30,7 +33,7 @@ import { euroDenominationFeature } from './store/reducer';
 })
 export class EuroDenominationComponent {
   private store = inject(Store);
-  readonly breakdown = this.store.selectSignal(euroDenominationFeature.selectBreakdown);
+  readonly breakdownRows = this.store.selectSignal(euroDenominationFeature.selectBreakdownRows);
   readonly difference = this.store.selectSignal(euroDenominationFeature.selectDifference);
   readonly error = this.store.selectSignal(euroDenominationFeature.selectError);
   readonly isCalculating = this.store.selectSignal(euroDenominationFeature.selectIsCalculating);
@@ -41,13 +44,13 @@ export class EuroDenominationComponent {
   readonly origin = this.store.selectSignal(euroDenominationFeature.selectOrigin);
 
   readonly originOptions = calcOriginOptions;
-  public currencyControl = new FormControl('', [
+  public currencyControl = new FormControl(0, [
     Validators.required,
     Validators.pattern(/^(?:\d+|\d*\.\d{1,2})$/),
   ]);
 
-  calculateDenomination(euroValue: string) {
-    const newCentValue = parseFloat(euroValue) * 100;
+  calculateDenomination(euroValue: number) {
+    const newCentValue = euroValue * 100;
     this.store.dispatch(EuroDenominationActions.calculateDenomination({ newCentValue }));
   }
   setOrigin(origin: DenomOrigin) {

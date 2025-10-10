@@ -1,22 +1,28 @@
-import { ChangeDetectionStrategy, Component, computed, input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, input } from '@angular/core';
+import { MatCard, MatCardContent, MatCardHeader, MatCardTitle } from '@angular/material/card';
 import { MatTableModule } from '@angular/material/table';
 import { MoneyPipe } from '../../../pipes/money-pipe';
 import { SignNumberPipe } from '../../../pipes/sign-number-pipe';
-import { formatBreakdown, type Breakdown } from '../store/model';
+import { type BreakdownRow } from '../store/model';
 
 @Component({
   selector: 'app-difference-table',
-  imports: [MatTableModule, MoneyPipe, SignNumberPipe],
+  imports: [
+    MatTableModule,
+    MatCard,
+    MatCardTitle,
+    MatCardContent,
+    MatCardHeader,
+    MoneyPipe,
+    SignNumberPipe,
+  ],
   templateUrl: './difference-table.component.html',
   styleUrl: './difference-table.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DifferenceTableComponent {
-  difference = input.required<Breakdown>();
+  difference = input.required<BreakdownRow[]>();
   lastCentValue = input.required<number>();
-  differenceRow = computed(() => {
-    const breakdown = this.difference();
-    return formatBreakdown(breakdown, false);
-  });
+
   displayedColumns: string[] = ['denomination', 'value'];
 }

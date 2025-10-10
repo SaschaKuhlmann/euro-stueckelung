@@ -1,6 +1,6 @@
-import { createFeature, createReducer, on } from '@ngrx/store';
+import { createFeature, createReducer, createSelector, on } from '@ngrx/store';
 import { EuroDenominationActions } from './actions';
-import { initialBreakdown, type EuroDenominationState } from './model';
+import { DENOMINATIONS, initialBreakdown, type EuroDenominationState } from './model';
 
 const initialState: EuroDenominationState = {
   origin: 'frontend',
@@ -9,7 +9,7 @@ const initialState: EuroDenominationState = {
   lastCentValue: 0,
   currentCentValue: 0,
   breakdown: { ...initialBreakdown },
-  difference: { ...initialBreakdown },
+  difference: [],
 };
 const reducer = createReducer(
   initialState,
@@ -55,4 +55,12 @@ const reducer = createReducer(
 export const euroDenominationFeature = createFeature({
   name: 'euroDenominationFeature',
   reducer: reducer,
+  extraSelectors: ({ selectBreakdown }) => ({
+    selectBreakdownRows: createSelector(selectBreakdown, (breakdown) =>
+      DENOMINATIONS.filter((d) => breakdown[d] > 0).map((d) => ({
+        denomination: d,
+        value: breakdown[d],
+      }))
+    ),
+  }),
 });

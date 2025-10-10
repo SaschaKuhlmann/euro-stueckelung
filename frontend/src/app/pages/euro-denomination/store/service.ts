@@ -1,7 +1,13 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
 import { of } from 'rxjs';
-import { type Breakdown, type DenominationResult, DENOMINATIONS, initialBreakdown } from './model';
+import {
+  type Breakdown,
+  type BreakdownRow,
+  type DenominationResult,
+  DENOMINATIONS,
+  initialBreakdown,
+} from './model';
 
 @Injectable({
   providedIn: 'root',
@@ -38,11 +44,19 @@ export class DenominationFrontendService {
     return breakdown;
   }
 
-  calculateDifference(oldBreakdown: Breakdown, newBreakdown: Breakdown) {
-    const diff = { ...initialBreakdown };
-    for (const denom of DENOMINATIONS) {
-      diff[denom] = newBreakdown[denom] - oldBreakdown[denom];
-    }
-    return diff;
+  calculateDifference(oldBreakdown: Breakdown, newBreakdown: Breakdown): BreakdownRow[] {
+    return DENOMINATIONS.reduce<BreakdownRow[]>((acc, denom) => {
+      const oldVal = oldBreakdown[denom];
+      const newVal = newBreakdown[denom];
+
+      // skip only if both are zero
+      if (oldVal === 0 && newVal === 0) return acc;
+
+      acc.push({
+        denomination: denom,
+        value: newVal - oldVal,
+      });
+      return acc;
+    }, []);
   }
 }
