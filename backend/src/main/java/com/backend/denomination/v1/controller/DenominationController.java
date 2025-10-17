@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 
 
 @RestController
-@RequestMapping("/api/denomination/v1")
+@RequestMapping("/api/public/denomination/v1")
 public class DenominationController {
     private final DenominationService denominationService;
 

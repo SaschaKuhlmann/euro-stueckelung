@@ -14,7 +14,7 @@ import {
   providedIn: 'root',
 })
 export class DenominationBackendService {
-  private api = `${environment.serverRef}/api/denomination`;
+  private api = `${environment.serverRef}/api/public/denomination`;
   private http = inject(HttpClient);
 
   calcDenomination(value: number, oldBreakdown: Breakdown) {

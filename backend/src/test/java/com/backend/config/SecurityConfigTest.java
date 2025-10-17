@@ -25,7 +25,8 @@ class SecurityConfigTest {
         CorsConfiguration cors = corsConfigurationSource.getCorsConfiguration(request);
 
         assertThat(cors).isNotNull();
-        assertThat(cors.getAllowedOrigins()).containsExactly("http://localhost:4200");
+        assertThat(cors.getAllowedOrigins()).containsExactly("http://localhost:4200",
+                "http://127.0.0.1:4200");
         assertThat(cors.getAllowedMethods()).contains("GET", "POST", "PUT", "DELETE", "OPTIONS");
         assertThat(cors.getAllowCredentials()).isTrue();
         assertThat(cors.getAllowedHeaders()).containsExactly("*");
