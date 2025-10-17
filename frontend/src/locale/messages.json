@@ -1,0 +1,25 @@
+{
+  "locale": "en-US",
+  "translations": {
+    "1": "Denomination",
+    "5947992387975555908": "New Denomination: {$INTERPOLATION}",
+    "5622911291745440628": "Denomination",
+    "6762504134540024018": "Quantity",
+    "6559570794782904300": "Old Denomination: {$INTERPOLATION}",
+    "5613733318610282610": "Difference",
+    "812867103082551334": "Pick your calculation origin",
+    "5299469064376247077": "Value to denominate",
+    "8615853915688970759": "denominate",
+    "103220111367852293": "Frontend",
+    "1360286660327265296": "Backend",
+    "5866254605255506989": "English",
+    "1858110241312746425": "German",
+    "2770166870006762730": "light",
+    "8262108640078645269": "dark",
+    "7445457977004232464": "system",
+    "2821179408673282599": "Home",
+    "422226603030702343": "Select a a Color Mode",
+    "2787379918444737545": "Select a theme for the app",
+    "2285537773737675252": "Select a language for the app"
+  }
+}

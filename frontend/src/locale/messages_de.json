@@ -1,0 +1,25 @@
+{
+  "locale": "de",
+  "translations": {
+    "1": "Münzen Zerlegung",
+    "5947992387975555908": "Neue Stückelung: {$INTERPOLATION}",
+    "5622911291745440628": "Scheine/Münzen",
+    "6762504134540024018": "Anzahl",
+    "6559570794782904300": "Differenz zu: {$INTERPOLATION}",
+    "5613733318610282610": "Differenz",
+    "812867103082551334": "Wählen sie die Berechnungsart",
+    "5299469064376247077": "Zu Zerstückelnder Betrag",
+    "8615853915688970759": "Berechnen",
+    "103220111367852293": "Frontend",
+    "1360286660327265296": "Backend",
+    "5866254605255506989": "Englisch",
+    "1858110241312746425": "Deutsch",
+    "2770166870006762730": "hell",
+    "8262108640078645269": "dunkel",
+    "7445457977004232464": "system",
+    "2821179408673282599": "Home",
+    "422226603030702343": "Wählen Sie Hell-/Dunkelmodus für die App",
+    "2787379918444737545": "Wählen Sie das Design der App",
+    "2285537773737675252": "Wählen Sie die Sprache der App"
+  }
+}

@@ -10,11 +10,28 @@
       "url": "http://localhost:4200/"
     },
     {
+      "name": "ng serve de",
+      "type": "chrome",
+      "request": "launch",
+      "preLaunchTask": "npm: de",
+      "url": "http://localhost:4200/"
+    },
+    {
       "name": "ng test",
       "type": "chrome",
       "request": "launch",
       "preLaunchTask": "npm: test",
+      "env": { "CHROME_BIN": "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe" },
       "url": "http://localhost:9876/debug.html"
+    },
+    {
+      "name": "Extract i18n",
+      "type": "node",
+      "request": "launch",
+      "program": "${workspaceFolder}/node_modules/@angular/cli/bin/ng",
+      "args": ["extract-i18n"],
+      "cwd": "${workspaceFolder}",
+      "console": "integratedTerminal"
     }
   ]
 }
