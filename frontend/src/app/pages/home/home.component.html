@@ -1,1 +1,48 @@
-<p>home.component works!</p>
+<section class="home">
+  <mat-card>
+    <mat-card-content>
+      <h1 i18n="@@1">Denomination</h1>
+
+      <p class="lead" i18n>
+        Quickly calculate an optimal euro denomination breakdown for any amount and see the
+        difference to an existing breakdown.
+      </p>
+
+      <h2 i18n>What this app does</h2>
+      <ul>
+        <li i18n>
+          Compute the minimal number of notes and coins (in euros) needed to represent an amount.
+        </li>
+        <li i18n>Show the difference between the previous breakdown and the new breakdown.</li>
+        <li i18n>Provide a simple web UI and an API endpoint for programmatic use.</li>
+      </ul>
+
+      <h2 i18n>How to use</h2>
+      <ol>
+        <li i18n>Enter an amount (in euros) in the denomination page.</li>
+        <li i18n>Submit to view the breakdown and the difference to the previous breakdown.</li>
+      </ol>
+
+      <h2 i18n>Developer notes</h2>
+      <p i18n>
+        The UI is built with Angular. This app supports two calculation modes which can be switched
+        in the UI:
+      </p>
+      <ul>
+        <li i18n><strong>Frontend mode</strong> — calculation runs in the browser</li>
+        <li i18n>
+          <strong>Backend mode</strong> — calculation is performed by the backend service at
+          <code>/api/public/denomination/v1</code> (POST).
+        </li>
+      </ul>
+      <p i18n>
+        Choose the mode using the frontend/backend toggle in the app. The README contains the API
+        request/response JSON shape for backend mode.
+      </p>
+
+      <p class="small muted" i18n>
+        See the project README at the repository root for build, run and Docker instructions.
+      </p>
+    </mat-card-content>
+  </mat-card>
+</section>

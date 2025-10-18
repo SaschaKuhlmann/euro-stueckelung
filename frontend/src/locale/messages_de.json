@@ -1,7 +1,7 @@
 {
   "locale": "de",
   "translations": {
-    "1": "Münzen Zerlegung",
+    "1": "Euro-Stückelung",
     "5947992387975555908": "Neue Stückelung: {$INTERPOLATION}",
     "5622911291745440628": "Scheine/Münzen",
     "6762504134540024018": "Anzahl",
@@ -20,6 +20,20 @@
     "2821179408673282599": "Home",
     "422226603030702343": "Wählen Sie Hell-/Dunkelmodus für die App",
     "2787379918444737545": "Wählen Sie das Design der App",
-    "2285537773737675252": "Wählen Sie die Sprache der App"
+    "2285537773737675252": "Wählen Sie die Sprache der App",
+    "8109121977437961600": " Eine optimale Euro-Stückelung für beliebige Beträge berechnen und die Differenz zu einer vorherigen Stückelung anzeigen. ",
+    "3693443221780244296": "Was diese App macht",
+    "5778653233393489696": " Zerlegt einen Betrag (in Euro) in die minimale Anzahl an Scheinen und Münzen, die benötigt wird, um den Betrag darzustellen. ",
+    "8486206174544110124": "Zeigt die Differenz zwischen der vorherigen Stückelung und der neuen Stückelung an.",
+    "5490695508477165984": "Bietet eine einfache Web-Oberfläche und einen API-Endpunkt für programmatische Nutzung.",
+    "5911600508931383328": "Wie man es benutzt",
+    "6160774493598252517": "Geben Sie auf der Euro-Stückelungsseite einen Betrag (in Euro) ein.",
+    "5826054484595162637": "Berechnen drücken, um die Stückelung und die Differenz zur vorherigen Stückelung anzuzeigen.",
+    "2599925109951777650": "Hinweise für Entwickler",
+    "2123033461165586531": " Die Benutzeroberfläche ist mit Angular erstellt. Diese App unterstützt zwei Berechnungsmodi, die in der UI umgeschaltet werden können: ",
+    "5685577184486058734": "{$START_TAG_STRONG}Frontend-Modus{$CLOSE_TAG_STRONG} — die Berechnung erfolgt im Browser",
+    "6216129826976581240": "{$START_TAG_STRONG}Backend-Modus{$CLOSE_TAG_STRONG} — die Berechnung wird vom Backend-Service unter {$START_TAG_CODE}/api/public/denomination/v1{$CLOSE_TAG_CODE} (POST) durchgeführt. ",
+    "3996165418379593323": " Wählen Sie den Modus mit dem Frontend/Backend-Umschalter in der App. Die README enthält das JSON-Format für Anfrage/Antwort im Backend-Modus. ",
+    "8321825248177897228": " Siehe die Projekt-README im Repository-Stamm für Build-, Start- und Docker-Anweisungen. "
   }
 }

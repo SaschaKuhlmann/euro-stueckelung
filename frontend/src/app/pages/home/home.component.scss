@@ -1,0 +1,59 @@
+/* Home component layout-only styles (no color overrides - Angular Material handles theme) */
+.home {
+  max-width: 900px;
+  margin: 2.5rem auto;
+  padding: 1.75rem;
+  border-radius: 8px;
+  font-family: Roboto, 'Helvetica Neue', Arial, sans-serif;
+
+  h1 {
+    margin: 0 0 0.5rem 0;
+    font-size: 1.75rem;
+    font-weight: 600;
+  }
+
+  .lead {
+    margin: 0 0 1rem 0;
+    font-size: 1rem;
+  }
+
+  h2 {
+    margin-top: 1.25rem;
+    margin-bottom: 0.5rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+  }
+
+  ul,
+  ol {
+    margin: 0 0 1rem 1.25rem;
+    padding: 0;
+  }
+
+  li {
+    margin-bottom: 0.5rem;
+    line-height: 1.45;
+  }
+
+  code {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, 'Roboto Mono', monospace;
+    padding: 0.08rem 0.28rem;
+    border-radius: 4px;
+    font-size: 0.9em;
+  }
+
+  .small.muted {
+    margin-top: 1rem;
+    font-size: 0.875rem;
+  }
+
+  /* subtle responsive tweaks */
+  @media (max-width: 640px) {
+    padding: 1rem;
+    margin: 1rem;
+
+    h1 {
+      font-size: 1.35rem;
+    }
+  }
+}
