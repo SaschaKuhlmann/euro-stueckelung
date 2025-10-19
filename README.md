@@ -10,6 +10,7 @@ This repository contains two main parts:
 ## Table of contents
 
 - What it does
+- Calculation modes & units
 - Architecture
 - Prerequisites
 - Local development
@@ -23,12 +24,20 @@ This repository contains two main parts:
 
 ## What it does
 
-The application accepts an amount (in cents) and an optional "old breakdown" of existing coins/notes and returns:
+The application accepts an amount (in Euro) and calculates:
 
-- `breakdown` — the minimal number of euro-denominations (notes and coins, represented in cents) required to represent the amount.
-- `difference` — a list of denomination deltas compared to the supplied old breakdown (useful for change management or cashier adjustments).
+- `breakdown` — the minimal number of euro-denominations (notes and coins) required to represent the amount.
+- `difference` — a list of denomination deltas compared to a previous calculation.
 
-Use cases: cash handling tools, cashier terminals, educational tools for currency decomposition.
+## Calculation modes & units
+
+The application supports two calculation modes which can be selected in the frontend UI (frontend/backend toggle):
+
+- Frontend mode (UI): all inputs and visuals in the frontend use euros as the unit. Users enter amounts in euros (for example "123.45" for €123.45) and the UI displays breakdowns and totals in euro values. In this mode the calculation happens in the browser — no API call is required.
+
+- Backend mode (API): when the frontend is switched to backend mode it sends a request to the backend calculation endpoint. The backend API expects and returns values in cents (integer). For example, €123.45 must be converted to 12345 when sent to the API. The backend response `breakdown` and `difference` maps use denominations in cents as keys.
+
+Important: When integrating or scripting against the API, always convert euro amounts to cents before calling the endpoint. The README's API examples show the API/cents shape.
 
 ## Architecture
 
@@ -104,7 +113,7 @@ docker build -t euro-stueckelung:latest .
 docker run --rm -p 8080:8080 euro-stueckelung:latest
 ```
 
-Open http://localhost:8080 (or http://localhost:8080/de/ for the German localized site).
+Open http://localhost:8080 (or http://localhost:8080/de/ for the German localized site. This does not work when using Angulars dev server).
 
 ## API reference (example)
 
@@ -118,16 +127,28 @@ Request JSON body (example):
 {
   "value": 12345,
   "oldBreakdown": {
+    "20000": 0,
+    "10000": 0,
+    "5000": 0,
+    "2000": 0,
     "1000": 1,
-    "200": 3
+    "500": 0,
+    "200": 3,
+    "100": 0,
+    "50": 0,
+    "20": 0,
+    "10": 0,
+    "5": 0,
+    "2": 0,
+    "1": 0
   }
 }
 ```
 
 Notes:
 
-- `value` is the requested amount in cents (e.g. 12345 = €123.45).
-- `oldBreakdown` is optional. Keys are denominations in cents (e.g. 20000 = €200 note, 100 = €1 coin).
+-- Frontend apps/UI: users enter and see amounts in euros (e.g. 123.45 means €123.45). The frontend will convert to cents for backend calls when in backend mode.
+-- API/backend: `value` is the requested amount in cents (e.g. 12345 = €123.45). `oldBreakdown` is a map that MUST include every denomination key (in cents) with integer counts — unused denominations should be 0. The backend `breakdown` in the response follows the same shape (all keys present). `difference` is a compact list of denomination deltas.
 
 Response (example):
 
@@ -135,11 +156,20 @@ Response (example):
 {
   "newValue": 12345,
   "breakdown": {
+    "20000": 0,
     "10000": 1,
+    "5000": 0,
     "2000": 1,
+    "1000": 0,
+    "500": 0,
+    "200": 0,
     "100": 3,
+    "50": 0,
     "20": 2,
-    "5": 1
+    "10": 0,
+    "5": 1,
+    "2": 0,
+    "1": 0
   },
   "difference": [
     { "denomination": 10000, "value": 1 },
