@@ -1,4 +1,4 @@
-# Euro Stueckelung
+# Denomination
 
 A small web application and REST API to calculate an optimal euro currency denomination breakdown and the difference to a previous breakdown.
 

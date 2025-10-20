@@ -9,6 +9,8 @@
     "5613733318610282610": "Difference",
     "812867103082551334": "Pick your calculation origin",
     "5299469064376247077": "Value to denominate",
+    "7697709344350439561": "Please enter a valid Currency value e.g. 123.15",
+    "1131515127557970236": "Value is {$START_TAG_STRONG}required{$CLOSE_TAG_STRONG}",
     "8615853915688970759": "denominate",
     "103220111367852293": "Frontend",
     "1360286660327265296": "Backend",

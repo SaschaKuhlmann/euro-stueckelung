@@ -8,7 +8,7 @@
     "6559570794782904300": "Differenz zu: {$INTERPOLATION}",
     "5613733318610282610": "Differenz",
     "812867103082551334": "Wählen sie die Berechnungsart",
-    "5299469064376247077": "Zu Zerstückelnder Betrag",
+    "5299469064376247077": "Zu zerstückelnder Betrag",
     "8615853915688970759": "Berechnen",
     "103220111367852293": "Frontend",
     "1360286660327265296": "Backend",
@@ -34,6 +34,8 @@
     "5685577184486058734": "{$START_TAG_STRONG}Frontend-Modus{$CLOSE_TAG_STRONG} — die Berechnung erfolgt im Browser",
     "6216129826976581240": "{$START_TAG_STRONG}Backend-Modus{$CLOSE_TAG_STRONG} — die Berechnung wird vom Backend-Service unter {$START_TAG_CODE}/api/public/denomination/v1{$CLOSE_TAG_CODE} (POST) durchgeführt. ",
     "3996165418379593323": " Wählen Sie den Modus mit dem Frontend/Backend-Umschalter in der App. Die README enthält das JSON-Format für Anfrage/Antwort im Backend-Modus. ",
-    "8321825248177897228": " Siehe die Projekt-README im Repository-Stamm für Build-, Start- und Docker-Anweisungen. "
+    "8321825248177897228": " Siehe die Projekt-README im Repository-Stamm für Build-, Start- und Docker-Anweisungen. ",
+    "7697709344350439561": "Bitte einen validen Betrag eingeben, z.B. 123.45",
+    "1131515127557970236": "Ein Betrag ist {$START_TAG_STRONG}erforderlich{$CLOSE_TAG_STRONG}"
   }
 }

@@ -19,9 +19,9 @@
     <input matInput type="value" [formControl]="currencyControl" />
     <span matTextPrefix>€&nbsp;</span>
     @if (currencyControl.hasError('pattern') && !currencyControl.hasError('required')) {
-    <mat-error>Please enter a valid Currency value e.g. 123.15</mat-error>
+    <mat-error i18n>Please enter a valid Currency value e.g. 123.15</mat-error>
     } @if (currencyControl.hasError('required')) {
-    <mat-error>Value is <strong>required</strong></mat-error>
+    <mat-error i18n>Value is <strong>required</strong></mat-error>
     }
   </mat-form-field>
   <button
